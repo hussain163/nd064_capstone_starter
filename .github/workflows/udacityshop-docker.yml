@@ -40,3 +40,21 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: hussain163/productcatalogservice:latest
+      -
+        name: Build and push currencyservice service
+        uses: docker/build-push-action@v2
+        with:
+          context: ./src/currencyservice
+          file: ./src/currencyservice/Dockerfile
+          platforms: linux/amd64
+          push: true
+          tags: hussain163/currencyservice:latest
+      -
+        name: Build and push adservice service
+        uses: docker/build-push-action@v2
+        with:
+          context: ./src/adservice
+          file: ./src/adservice/Dockerfile
+          platforms: linux/amd64
+          push: true
+          tags: hussain163/adservice:latest
