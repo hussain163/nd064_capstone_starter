@@ -15,9 +15,6 @@ jobs:
         id: docker_meta
         uses: crazy-max/ghaction-docker-meta@v1
         with:
-          # list of Docker images to use as base name for tags
-          images: |
-            name/app
           # add git short SHA as Docker tag
           tag-sha: true
       -
@@ -40,6 +37,7 @@ jobs:
           file: ./src/frontend/Dockerfile
           platforms: linux/amd64
           push: true
+          repository: hussain163/frontend
           tags: ${{ steps.docker_meta.outputs.tags }}
       -
         name: Build and push productcatalogservice service
