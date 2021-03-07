@@ -15,7 +15,7 @@ spec:
       serviceAccountName: default
       containers:
         - name: server
-          image: hussain163/frontend:latest
+          image: hussain163/frontend:sha-a4ef2c0
           ports:
           - containerPort: 8080
           readinessProbe:
