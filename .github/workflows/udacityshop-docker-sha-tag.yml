@@ -18,6 +18,8 @@ jobs:
           # list of Docker images to use as base name for tags
           images: |
             hussain163/frontend
+            hussain163/productcatalogservice
+            hussain163/currencyservice
             hussain163/adservice
           # add git short SHA as Docker tag
           tag-sha: true
@@ -39,6 +41,24 @@ jobs:
         with:
           context: ./src/frontend
           file: ./src/frontend/Dockerfile
+          platforms: linux/amd64
+          push: true
+          tags: ${{ steps.docker_meta.outputs.tags }}
+      -
+        name: Build and push productcatalogservice service
+        uses: docker/build-push-action@v2
+        with:
+          context: ./src/productcatalogservice
+          file: ./src/productcatalogservice/Dockerfile
+          platforms: linux/amd64
+          push: true
+          tags: ${{ steps.docker_meta.outputs.tags }}
+      -
+        name: Build and push currencyservice service
+        uses: docker/build-push-action@v2
+        with:
+          context: ./src/currencyservice
+          file: ./src/currencyservice/Dockerfile
           platforms: linux/amd64
           push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
