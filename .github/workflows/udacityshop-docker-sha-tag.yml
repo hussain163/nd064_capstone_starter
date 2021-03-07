@@ -41,8 +41,7 @@ jobs:
           file: ./src/frontend/Dockerfile
           platforms: linux/amd64
           push: true
-          repository: hussain163/frontend
-          tag_with_sha: true
+          tags: ${{ steps.docker_meta.outputs.tags }}
       -
         name: Build and push productcatalogservice service
         uses: docker/build-push-action@v2
