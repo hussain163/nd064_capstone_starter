@@ -1,4 +1,4 @@
-name: Uda'CityShop [sha tag] - Package with Docker
+name: Uda'CityShop [latest tag] - Package with Docker
 on:
   push:
     branches: [ main , master ]
@@ -41,33 +41,3 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
-      -
-        name: Build and push productcatalogservice service
-        uses: docker/build-push-action@v2
-        with:
-          context: ./src/productcatalogservice
-          file: ./src/productcatalogservice/Dockerfile
-          platforms: linux/amd64
-          push: true
-          repository: hussain163/productcatalogservice
-          tag_with_sha: true
-      -
-        name: Build and push currencyservice service
-        uses: docker/build-push-action@v2
-        with:
-          context: ./src/currencyservice
-          file: ./src/currencyservice/Dockerfile
-          platforms: linux/amd64
-          push: true
-          repository: hussain163/currencyservice
-          tag_with_sha: true
-      -
-        name: Build and push adservice service
-        uses: docker/build-push-action@v2
-        with:
-          context: ./src/adservice
-          file: ./src/adservice/Dockerfile
-          platforms: linux/amd64
-          push: true
-          repository: hussain163/adservice
-          tag_with_sha: true
